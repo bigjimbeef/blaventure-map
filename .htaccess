@@ -1,0 +1,13 @@
+RewriteEngine on                                                                
+                                                                                
+<IfModule mod_rewrite.c>                                                        
+    # Redirect hotsbuilds.info to www.hotsbuilds.info                           
+    #RewriteCond %{HTTP_HOST} ^hotsbuilds.info [NC]                              
+    #RewriteRule ^(.*)$ http://www.hotsbuilds.info/$1 [L,R=302]                  
+                                                                                
+    # Run everything else but real files through index.php                      
+    RewriteCond %{REQUEST_FILENAME} !-d                                         
+    RewriteCond %{REQUEST_FILENAME} !-f                                         
+    RewriteRule ^(.*)$ index.php/$1?%{QUERY_STRING} [L]
+</IfModule>
+

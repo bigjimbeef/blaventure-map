@@ -1,0 +1,109 @@
+* {
+	font-family:	consolas;
+
+	padding:		0;
+	margin:			0;
+}
+
+html, body {
+	height:			100%;
+	width:			100%;
+}
+
+#container {
+	float:			left;
+	height:			100%;
+	width:			100%;
+
+	overflow:		none;
+}
+
+#viewport {
+	display: 		none;
+}
+
+svg {
+	float:			left;
+
+	width:			100%;
+	height:			100%;
+}
+
+svg rect {
+	stroke:			#999;
+	stroke-width:	2px;
+	fill:			#EFEFEF;
+}
+
+svg rect.start {
+	fill:			#90C3D4;
+}
+
+svg rect.current {
+	fill:			#A1D490;
+}
+
+svg rect.monster {
+	fill:			#BB0000;
+}
+
+svg rect.highlighted {
+	fill:			#FF00FF;
+}
+
+#legend {
+
+	width: 			250px;
+	height:			100%;
+
+	position:		fixed;
+	right: 			0;
+
+	background:		rgba(100,100,100,0.4);
+
+	color:			#444;
+}
+
+#legend h2 {
+	margin:			30px 10px;
+}
+
+#legend .info {
+	margin:			20px 10px;
+
+	font-size:		18px;
+	height:			18px;
+
+	position:		relative;
+}
+
+#legend .info .image {
+	width:			16px;
+	height:			16px;
+
+	margin:			2px;
+
+	display: 		inline-block;
+
+	border:			2px solid #999;
+}
+
+#legend .info span {
+	position:		absolute;
+
+	left:			30px;
+	top:			1px;
+}
+
+#legend .info .image.start {
+	background:		#90C3D4;
+}
+#legend .info .image.current {
+	background:		#A1D490;
+}
+#legend .info .image.highlighted {
+	background:		#FF00FF;
+}
+#legend .info .image.monster {
+	background:		#BB0000;
+}
