@@ -92,7 +92,9 @@ function getMapHTML($nick) {
 
 	$saveDir	= get_cfg_var("save_directory");
 	$path 		= $saveDir . "$nick.map";
-
+	if (!file_exists($path)){
+	return '';
+	}
 	$handle		= fopen($path, "r");
 	$serialData	= fread($handle, filesize($path));
 	fclose($handle);
