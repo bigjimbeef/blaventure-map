@@ -63,7 +63,7 @@ function getAllNicks() {
 	    }
 
 	    $fileName 	= $fileinfo->getFilename();
-	    $nickRegex	= "/\A([a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*).[\w]+/";
+	    $nickRegex	= "/\A([a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*).[\w]+/i";
 
 	    preg_match($nickRegex, $fileName, $matches);
 
