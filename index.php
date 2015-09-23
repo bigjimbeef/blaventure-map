@@ -84,6 +84,8 @@ function getMapHTML($nick) {
 
 	global $MAP_SIZE, $TILE_SIZE;
 
+	$mapMid		= floor($MAP_SIZE / 2);
+
 	$saveDir	= get_cfg_var("save_directory");
 	$path 		= $saveDir . "$nick.map";
 
@@ -134,15 +136,14 @@ function getMapHTML($nick) {
 			if ( $isCurrent ) {
 				$class = "current";
 			}
-			// lol
-			else if ( $i == 50 && $j == 50 ) {
+			else if ( $i == $mapMid && $j == $mapMid ) {
 				$class = "start";
 			}
 			else if ( !is_null($gridItem->occupant) ) {
 				$class = "monster";
 			}
 
-			$rect = "<rect onClick='highlight(evt)' x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$class $nick' />";
+			$rect = "<rect x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$nick' />";
 			$output .= $rect;
 
 			$y += $TILE_SIZE;

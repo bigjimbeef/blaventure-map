@@ -30,25 +30,9 @@ svg {
 }
 
 svg rect {
-	stroke:			#999;
-	stroke-width:	2px;
+	stroke:			#555;
+	stroke-width:	1px;
 	fill:			#EFEFEF;
-}
-
-svg rect.start {
-	fill:			#90C3D4;
-}
-
-svg rect.current {
-	fill:			#A1D490;
-}
-
-svg rect.monster {
-	fill:			#BB0000;
-}
-
-svg rect.highlighted {
-	fill:			#FF00FF;
 }
 
 #legend {
@@ -77,6 +61,10 @@ svg rect.highlighted {
 	position:		relative;
 }
 
+#legend #info-proto.info {
+	visibility: 	hidden;
+}
+
 #legend .info .image {
 	width:			16px;
 	height:			16px;
@@ -95,15 +83,22 @@ svg rect.highlighted {
 	top:			1px;
 }
 
-#legend .info .image.start {
-	background:		#90C3D4;
+#legend .info {
+	cursor:			pointer;
 }
-#legend .info .image.current {
-	background:		#A1D490;
+
+#legend #show-all {
+
+	display:		none;
+
+	float:			right;
+	margin-right:	20px;
+
+	cursor:			pointer;
+
+	color:			blue;
 }
-#legend .info .image.highlighted {
-	background:		#FF00FF;
-}
-#legend .info .image.monster {
-	background:		#BB0000;
+
+#show-all:hover {
+	text-decoration: 	underline;
 }
