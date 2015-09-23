@@ -2,8 +2,12 @@
 
 include_once("simple_html_dom.php");
 
-include_once("/home/minikeen/Code/blaventure/class_definitions.php");
-include_once("/home/minikeen/Code/blaventure/statics.php");
+$includeDir 	= get_cfg_var("include_directory");
+$classDefFile 	= $includeDir . "class_definitions.php";
+$staticsFile	= $includeDir . "statics.php";
+
+include_once($classDefFile);
+include_once($staticsFile);
 
 $MAP_SIZE	= 101;
 $TILE_SIZE	= 16;
