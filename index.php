@@ -163,10 +163,7 @@ function getMapHTML($nick) {
 
 				$occupant = $gridItem->occupant;
 				$occupantStr = "Level $occupant->level $occupant->name ($occupant->hp/$occupant->hpMax)";
-				if ( $occupant->elite ) {
-					$occupantStr = "ELITE " . $occupantStr;
-				}
-
+				
 				$dataItem = "data-occupant='$occupantStr'";
 
 				$rect .= $circle;
