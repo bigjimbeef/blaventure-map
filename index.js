@@ -22,7 +22,7 @@ function transformToMid(inScale) {
 function getRandomColourArray() {
 
 	var baseColour 	= Please.HEX_to_HSV(Please.make_color());
-	var scheme 		= Please.make_scheme(baseColour, {scheme_type: 'ana'});
+	var scheme 		= Please.make_scheme(baseColour, {scheme_type: 'double'});
 
 	return scheme;
 }
@@ -63,7 +63,10 @@ function addMapColouringFromClasses() {
 			$(protoClone).click(function() {
 
 				$('svg rect').show();
+				$('svg circle').show();
+
 				$('svg rect').not('.' + rectClass).hide();
+				$('svg circle').not('[data-owner="' + rectClass + '"]').hide();
 
 				$('#show-all').show();
 			});
@@ -78,6 +81,7 @@ function addMapColouringFromClasses() {
 
 	$('#show-all').click(function() {
 		$('svg rect').show();
+		$('svg circle').show();
 
 		$(this).hide();
 	});
@@ -94,4 +98,26 @@ $(document).ready(function() {
 
 	// Show it after moving it.
 	$('#viewport').show();
+
+	$("rect").tooltip({
+		items: ":not([hidden])",
+		content: 	function() {
+			
+			var tooltip = false;
+
+			var siblings = $(this).siblings();
+
+			if ( typeof(siblings[0]) != "undefined" ) {
+
+				tooltip = $(siblings[0]).data('owner');
+			}
+
+			return tooltip;
+		},
+		track: 		true,
+		position: 	{
+			my: "left top+20 center",
+			at: "right center"
+		} 
+	});
 });

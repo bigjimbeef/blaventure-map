@@ -1,14 +1,16 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="index.css" />
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 		<script src="jquery.svgpan.js"></script>
 		<script src="please.min.js"></script>
 
 		<script src="index.js"></script>
-
 		<script id="phpscript"></script>
+
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" />
 	</head>
 	<body>
 		<div id="container">
@@ -20,6 +22,10 @@
 			<h2 id="name">Key</h2>
 			<div id="info-proto" class="info"><div class="image"></div><span></span></div>
 			<div id="show-all">Show All</div>
+			<hr />
+			<div class="info"><div class="image circle current"></div><span>Current Position</span></div>
+			<div class="info"><div class="image circle start"></div><span>Start Position</span></div>
+			<div class="info"><div class="image circle monster"></div><span>Monster Present</span></div>
 		</div>
 	</body>
 </html>

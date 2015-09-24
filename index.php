@@ -139,17 +139,29 @@ function getMapHTML($nick) {
 
 			$gridItem = $grid[$i][$j];
 
+			$rect = "<g><rect x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$nick' />";
+
 			if ( $isCurrent ) {
-				$class = "current";
+				
+				$circle = getCircleHTML($x, $y, 0, 0, $nick, "current");
+
+				$rect .= $circle;
 			}
 			else if ( $i == $mapMid && $j == $mapMid ) {
-				$class = "start";
+
+				$circle = getCircleHTML($x, $y, -5, 5, $nick, "start");
+
+				$rect .= $circle;
 			}
 			else if ( !is_null($gridItem->occupant) ) {
-				$class = "monster";
+
+				$circle = getCircleHTML($x, $y, 5, -5, $nick, "monster");
+
+				$rect .= $circle;
 			}
 
-			$rect = "<rect x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$nick' />";
+			$rect .= "</g>";
+
 			$output .= $rect;
 
 			$y += $TILE_SIZE;
@@ -160,6 +172,20 @@ function getMapHTML($nick) {
 	}
 
 	return array($output, $numX, $data->playerY);
+}
+
+function getCircleHTML($x, $y, $xOffsetFromCentre, $yOffsetFromCentre, $nick, $extraClass) {
+
+	global $TILE_SIZE;
+
+	$tileHalfSize = $TILE_SIZE / 2;
+	$xMid = $x + $tileHalfSize;
+	$yMid = $y + $tileHalfSize;
+
+	$xPos = $xMid + $xOffsetFromCentre;
+	$yPos = $yMid + $yOffsetFromCentre;
+
+	return "<circle cx='$xPos' cy='$yPos' r='2' class='circle-marker $extraClass' data-owner='$nick' />";
 }
 
 function renderHTML($baseHTML, $html, $x, $y) {

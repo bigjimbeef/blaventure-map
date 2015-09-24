@@ -35,6 +35,15 @@ svg rect {
 	fill:			#EFEFEF;
 }
 
+svg circle {
+	fill:			none;
+}
+
+svg circle.circle-marker {
+	stroke:			#555;
+	stroke-width:	0.5px;
+}
+
 #legend {
 
 	width: 			250px;
@@ -101,4 +110,25 @@ svg rect {
 
 #show-all:hover {
 	text-decoration: 	underline;
+}
+
+#legend hr {
+	margin:			60px 0 30px 0;
+}
+
+.start {
+	background:		#00AEEF;
+	fill:			#00AEEF;
+}
+.monster {
+	background:		#EF4100;
+	fill:			#EF4100;
+}
+.current {
+	background:		#37EF00;
+	fill:			#37EF00;
+}
+
+#legend .info .image.circle {
+	border-radius: 	10px;
 }
