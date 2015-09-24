@@ -129,6 +129,10 @@ $(document).ready(function() {
 
 					tooltip = $(circle).data('owner');
 				}
+				else if ( circle.classList.contains('monster') ) {
+
+					tooltip = $(this).data('occupant');
+				}
 			}
 
 			return tooltip;

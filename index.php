@@ -141,7 +141,9 @@ function getMapHTML($nick) {
 
 			$gridItem = $grid[$i][$j];
 
-			$rect = "<g><rect x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$nick' />";
+			$dataItem = "";
+
+			$rect = "<g><rect x='$x' y='$y' width='$TILE_SIZE' height='$TILE_SIZE' class='$nick' # />";
 
 			if ( $isCurrent ) {
 				
@@ -159,8 +161,18 @@ function getMapHTML($nick) {
 
 				$circle = getCircleHTML($x, $y, 5, -5, $nick, "monster");
 
+				$occupant = $gridItem->occupant;
+				$occupantStr = "Level $occupant->level $occupant->name ($occupant->hp/$occupant->hpMax)";
+				if ( $occupant->elite ) {
+					$occupantStr = "ELITE " . $occupantStr;
+				}
+
+				$dataItem = "data-occupant='$occupantStr'";
+
 				$rect .= $circle;
 			}
+
+			$rect = preg_replace("/#/", $dataItem, $rect);
 
 			$rect .= "</g>";
 
