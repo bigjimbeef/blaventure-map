@@ -190,51 +190,47 @@ function getCircleHTML($x, $y, $xOffsetFromCentre, $yOffsetFromCentre, $nick, $e
 	return "<circle cx='$xPos' cy='$yPos' r='2' class='circle-marker $extraClass' data-owner='$nick' />";
 }
 
-function renderHTML($baseHTML, $html, $x, $y) {
+function renderHTML($baseHTML, $html, $scriptHTML) {
 
 	// Render the page.
 	$container = $baseHTML->find("#viewport", 0);
 	$container->innertext = $html;
 
-	$scriptHTML = getSizesScriptTag();
 	$phpinfo	= $baseHTML->find("#phpscript", 0);
 	$phpinfo->innertext = $scriptHTML;
 
 	echo $baseHTML;
 }
 
-function getSizesScriptTag() {
+function getScriptParams($nickParam) {
 
 	global $MAP_SIZE, $TILE_SIZE;
 
-	return "var mapSize = $MAP_SIZE; var tileSize = $TILE_SIZE;";
+	$sizeParams = "var mapSize = $MAP_SIZE; var tileSize = $TILE_SIZE;";
+
+	if ( !is_null($nickParam) ) {
+		$sizeParams .= " var targetNick = '$nickParam';";
+	}
+
+	return $sizeParams;
 }
 
 $gridHTML 		= "";
 $baseHTML		= file_get_html("base.html");
 $nickFromURL 	= getNickFromURL();
 
-$singleMapSet 	= false;
+$nickParam = null;
 if ( strlen($nickFromURL) > 0 ) {
+	$nickParam = $nickFromURL;
+}
+$scriptHTML = getScriptParams($nickParam);
 
-	$outHTML = getMapHTML($nickFromURL);
+$nicks 		= getAllNicks();
 
-	if ( !is_null($outHTML) ) {
-		$gridHTML .= $outHTML;
+foreach ( $nicks as $nick ) {
 
-		$singleMapSet = true;
-	}
+	$outHTML	= getMapHTML($nick);
+	$gridHTML 	.= $outHTML;
 }
 
-if ( !$singleMapSet ) {
-
-	$nicks 		= getAllNicks();
-	
-	foreach ( $nicks as $nick ) {
-
-		$outHTML	= getMapHTML($nick);
-		$gridHTML 	.= $outHTML;
-	}
-}
-
-renderHTML($baseHTML, $gridHTML, 0, 0);
+renderHTML($baseHTML, $gridHTML, $scriptHTML);

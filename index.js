@@ -62,6 +62,9 @@ function addMapColouringFromClasses() {
 
 			$(protoClone).click(function() {
 
+				localStorage.removeItem('nick');
+				localStorage.setItem('nick', rectClass);
+
 				$('svg rect').show();
 				$('svg circle').show();
 
@@ -80,11 +83,25 @@ function addMapColouringFromClasses() {
 	});
 
 	$('#show-all').click(function() {
+		
+		localStorage.removeItem('nick');
+
 		$('svg rect').show();
 		$('svg circle').show();
 
 		$(this).hide();
 	});
+}
+
+function clickOnNick(target) {
+
+	var element = $('#legend .info').find('*').filter(function() {
+		return $(this).text() === target;
+	});
+
+	if ( element ) {
+		$(element).parent().click();
+	}
 }
 
 $(document).ready(function() {
@@ -97,10 +114,22 @@ $(document).ready(function() {
 	addMapColouringFromClasses();
 
 	// Show it after moving it.
-	setInterval(function() {
+	setTimeout(function() {
+
 		$('#viewport').show();
-		
-	}, 50);
+
+		var nickFromStore = localStorage.getItem('nick');
+
+		if ( typeof(targetNick) != "undefined" ) {
+
+			clickOnNick(targetNick);
+		}
+		else if ( nickFromStore ) {
+
+			clickOnNick(nickFromStore);
+		}
+
+	}, 100);
 
 	$("rect").tooltip({
 		items: ":not([hidden])",
