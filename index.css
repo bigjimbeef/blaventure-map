@@ -10,6 +10,7 @@ html, body {
 	width:			100%;
 }
 
+
 #container {
 	float:			left;
 	height:			100%;
@@ -51,6 +52,8 @@ svg circle.circle-marker {
 	background:		rgba(100,100,100,0.4);
 
 	color:			#444;
+
+	overflow: 		auto;
 }
 
 #legend h2 {
