@@ -132,3 +132,14 @@ svg circle.circle-marker {
 #legend .info .image.circle {
 	border-radius: 	10px;
 }
+
+body div.ui-tooltip {
+	border:			none;
+	border-radius: 	0;
+
+	background:		rgba(100,100,100,0.6);
+
+	box-shadow: 		none;
+	-moz-box-shadow: 	none;
+	-webkit-box-shadow: none;
+}

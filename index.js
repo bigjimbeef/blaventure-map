@@ -109,7 +109,12 @@ $(document).ready(function() {
 
 			if ( typeof(siblings[0]) != "undefined" ) {
 
-				tooltip = $(siblings[0]).data('owner');
+				var circle = siblings[0];
+
+				if ( circle.classList.contains('current') ) {
+
+					tooltip = $(circle).data('owner');
+				}
 			}
 
 			return tooltip;
@@ -118,6 +123,8 @@ $(document).ready(function() {
 		position: 	{
 			my: "left top+20 center",
 			at: "right center"
-		} 
+		},
+		show: false,
+		hide: false
 	});
 });
