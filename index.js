@@ -155,6 +155,4 @@ function svgLoaded(evt) {
 
 		clickOnNick(nickFromStore);
 	}
-
-	$('#viewport').show();
 }
