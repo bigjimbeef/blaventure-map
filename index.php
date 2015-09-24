@@ -92,9 +92,11 @@ function getMapHTML($nick) {
 
 	$saveDir	= get_cfg_var("save_directory");
 	$path 		= $saveDir . "$nick.map";
-	if (!file_exists($path)){
-	return '';
+
+	if ( !file_exists($path) ){
+		return null;
 	}
+
 	$handle		= fopen($path, "r");
 	$serialData	= fread($handle, filesize($path));
 	fclose($handle);
@@ -171,7 +173,7 @@ function getMapHTML($nick) {
 		$y = 0;
 	}
 
-	return array($output, $numX, $data->playerY);
+	return $output;
 }
 
 function getCircleHTML($x, $y, $xOffsetFromCentre, $yOffsetFromCentre, $nick, $extraClass) {
@@ -208,16 +210,31 @@ function getSizesScriptTag() {
 	return "var mapSize = $MAP_SIZE; var tileSize = $TILE_SIZE;";
 }
 
-$nicks 		= getAllNicks();
-$baseHTML	= file_get_html("base.html");
+$gridHTML 		= "";
+$baseHTML		= file_get_html("base.html");
+$nickFromURL 	= getNickFromURL();
 
-$gridHTML 	= "";
+$singleMapSet 	= false;
+if ( strlen($nickFromURL) > 0 ) {
 
-foreach ( $nicks as $nick ) {
+	$outHTML = getMapHTML($nickFromURL);
 
-	list($outHTML, $x, $y) 	= getMapHTML($nick);
+	if ( !is_null($outHTML) ) {
+		$gridHTML .= $outHTML;
 
-	$gridHTML .= $outHTML;
+		$singleMapSet = true;
+	}
+}
+
+if ( !$singleMapSet ) {
+
+	$nicks 		= getAllNicks();
+	
+	foreach ( $nicks as $nick ) {
+
+		$outHTML	= getMapHTML($nick);
+		$gridHTML 	.= $outHTML;
+	}
 }
 
 renderHTML($baseHTML, $gridHTML, 0, 0);

@@ -97,7 +97,10 @@ $(document).ready(function() {
 	addMapColouringFromClasses();
 
 	// Show it after moving it.
-	$('#viewport').show();
+	setInterval(function() {
+		$('#viewport').show();
+		
+	}, 50);
 
 	$("rect").tooltip({
 		items: ":not([hidden])",
