@@ -113,24 +113,6 @@ $(document).ready(function() {
 
 	addMapColouringFromClasses();
 
-	// Show it after moving it.
-	setTimeout(function() {
-
-		$('#viewport').show();
-
-		var nickFromStore = localStorage.getItem('nick');
-
-		if ( typeof(targetNick) != "undefined" ) {
-
-			clickOnNick(targetNick);
-		}
-		else if ( nickFromStore ) {
-
-			clickOnNick(nickFromStore);
-		}
-
-	}, 100);
-
 	$("rect").tooltip({
 		items: ":not([hidden])",
 		content: 	function() {
@@ -160,3 +142,19 @@ $(document).ready(function() {
 		hide: false
 	});
 });
+
+function svgLoaded(evt) {
+
+	var nickFromStore = localStorage.getItem('nick');
+
+	if ( typeof(targetNick) != "undefined" ) {
+
+		clickOnNick(targetNick);
+	}
+	else if ( nickFromStore ) {
+
+		clickOnNick(nickFromStore);
+	}
+
+	$('#viewport').show();
+}
