@@ -10,6 +10,11 @@ html, body {
 	width:			100%;
 }
 
+#news {
+	position:		absolute;
+	top:			10px;
+	left:			10px;
+}
 
 #container {
 	float:			left;
