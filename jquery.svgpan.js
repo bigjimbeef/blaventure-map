@@ -206,8 +206,6 @@
 
                     p = p.matrixTransform(g.getCTM().inverse());
 
-                    console.log(z);
-
                     // Compute new scale matrix in current mouse position
                     k = root.createSVGMatrix().translate(p.x, p.y).scale(z).translate(-p.x, -p.y);
 
