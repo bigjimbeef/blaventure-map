@@ -159,12 +159,24 @@ function getMapHTML($nick) {
 			}
 			else if ( !is_null($gridItem->occupant) ) {
 
-				$circle = getCircleHTML($x, $y, 5, -5, $nick, "monster");
-
 				$occupant = $gridItem->occupant;
-				$occupantStr = "Level $occupant->level $occupant->name ($occupant->hp/$occupant->hpMax)";
-				
-				$dataItem = "data-occupant='$occupantStr'";
+
+				$circle = "";
+				if ( get_class($occupant) == "Monster" ) {
+
+					$circle = getCircleHTML($x, $y, 5, -5, $nick, "monster");
+
+					$occupantStr = "Level $occupant->level $occupant->name ($occupant->hp/$occupant->hpMax)";
+					
+					$dataItem = "data-occupant='$occupantStr'";
+				}
+				else if ( get_class($occupant) == "Shop" ) {
+
+					$circle = getCircleHTML($x, $y, 5, 5, $nick, "shop");
+
+					$occupantStr = "SHOP";
+					$dataItem = "data-occupant='$occupantStr'";
+				}
 
 				$rect .= $circle;
 			}

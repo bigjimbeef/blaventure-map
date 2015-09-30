@@ -129,7 +129,7 @@ $(document).ready(function() {
 
 					tooltip = $(circle).data('owner');
 				}
-				else if ( circle.classList.contains('monster') ) {
+				else if ( circle.classList.contains('monster') || circle.classList.contains('shop') ) {
 
 					tooltip = $(this).data('occupant');
 				}
