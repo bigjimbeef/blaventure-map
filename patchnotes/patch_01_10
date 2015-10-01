@@ -1,0 +1,23 @@
+# blaventure
+# version 0.5
+#
+# patch notes [01/10/2015]
+#
+
+*General*
+
+*NEW*
+- Monster scaling has changed!
+	- Monsters higher level than you are now /significantly/ more able to kill you
+	- Both your character and monsters are now able to miss
+	- Miss chance is governed by the level gap between you
+
+*NEW*
+- Added coloured indication of the monster's level relative to yours
+	- Green (Easy):          Will die with no effort
+	- White (Normal):        A regular challenge
+	- Yellow (Hard):         Puts up a fight, could kill you
+	- Red (Very Hard):       Dangerous to fight, but doable
+	- Magenta (Impossible):  Suicide. Run away.
+
+Ignore these indicators at your own peril!
