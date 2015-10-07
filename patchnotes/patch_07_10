@@ -1,0 +1,16 @@
+# blaventure
+# version 0.6
+#
+# patch notes [07/10/2015]
+#
+
+*General*
+
+*NEW*
+- Added Bonus Streaks!
+	- The more enemies you can kill in a row, the better rewards you will get
+		- GP rewards for defeating enemies will scale, non-linearly, with Bonus Streak
+	- When you defeat enemies, your streak will accumulate
+	- When you rest, your streak is reset
+	- Running away from enemies will decrease your streak slightly
+	- Your streak will increase more against harder enemies
