@@ -1,0 +1,57 @@
+# blaventure
+# version 1.0 (!)
+#
+# patch notes [13/10/2015]
+#
+
+*General*
+
+*NEW*
+PERSONA system
+
+- Characters now have more stats, representing aspects of their PERSONA
+	- P (precision):  Chance to hit monsters (higher Precision stops misses against high-level targets)
+	- E (endurance):  Controls the amount of HP the character has
+	- R (reflexes):   Governs the dodge chance of a character
+	- S (strength):   Increases attack damage, both with weapons and spells.
+	- O (oddness):    Controls the MP of the character.
+	- N (nerve):      Corresponds to the defense of the character
+	- A (acuity):     Critical hit chance is controlled by Acuity
+
+- Each character class, upon creation, now have distinct PERSONAs:
+
+	           P  E  R  S  O  N  A
+	Barbarian  0  6  3  8  0  3  0
+	Cleric     0  4  0  3 10  3  0
+	Fighter    0 10  0  4  1  5  0
+	Monk       2  5  6  2  5  0  0
+	Rogue      1  7  5  3  1  0  3
+	Wizard     0  2  0  1 15  2  0
+
+
+*NEW*
+Dynasties
+
+- Upon first play this patch, you will be prompted to create a Dynasty
+- Dynasty name is your character's surname, and is chosen only once
+
+- It is a cross-character persistent layer, which carries a PERSONA of its own
+	- Upgrading the stats for your Dynasty will apply those stats to every character in that Dynasty from then on
+	- Gold gained by characters is added to the Dynasty coffers
+	- Cost of upgrading the stats increases with Dynasty level, and stat rank
+
+- See "blaventure.bgk.io" for a basic build calculator
+
+
+*Balance*
+
+- Introduction of Dynasties has lead to necessity for balance tweaks.
+
+- Monster scaling has been changed to be much more difficult at higher levels
+	- High-level monsters now have greater health
+	- High-level monsters now hit much harder
+
+
+*Bug Fixes*
+
+- Streak will now reset properly on resting
